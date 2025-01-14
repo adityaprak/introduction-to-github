@@ -1,0 +1,12 @@
+$VPN_NAME = 'VPN'
+$SERVER_ADDRESS = 'us178.vpnbook.com'
+$USERNAME = 'vpnbook'
+$PASSWORD = 'hu86c9k'
+
+# Create the VPN connection
+Add-VpnConnection -Name $VPN_NAME -ServerAddress $SERVER_ADDRESS -TunnelType PPTP -RememberCredential -PassThru
+
+# Connect to the VPN
+rasdial $VPN_NAME $USERNAME $PASSWORD
+
+Remove-VpnConnection -Name 'VPN' -Force
